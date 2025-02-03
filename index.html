@@ -1219,7 +1219,18 @@
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    AOS.init();
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init({
+        once: true, // Animasi hanya terjadi sekali
+        duration: 800, // Durasi animasi agar lebih smooth
+        easing: "ease-out", // Efek animasi lebih halus
+        mirror: false, // Mencegah animasi berjalan mundur saat di-scroll kembali
+      });
+
+      // Tambahkan overflow-x: hidden untuk mencegah width berlebihan
+      document.documentElement.style.overflowX = "hidden";
+      document.body.style.overflowX = "hidden";
+    });
   </script>
 
   <script src="src/js/script.js"></script>
