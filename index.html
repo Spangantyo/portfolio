@@ -1220,6 +1220,7 @@
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      // Inisialisasi AOS
       AOS.init({
         once: true, // Animasi hanya terjadi sekali
         duration: 800, // Durasi animasi agar lebih smooth
@@ -1227,11 +1228,14 @@
         mirror: false, // Mencegah animasi berjalan mundur saat di-scroll kembali
       });
 
-      // Tambahkan overflow-x: hidden untuk mencegah width berlebihan
-      document.documentElement.style.overflowX = "hidden";
-      document.body.style.overflowX = "hidden";
+      // Menambahkan overflow-x: hidden hanya untuk mode HP (lebar layar kurang dari 768px)
+      if (window.innerWidth <= 768) { // Menggunakan lebar layar untuk mendeteksi HP
+        document.documentElement.style.overflowX = "hidden";
+        document.body.style.overflowX = "hidden";
+      }
     });
   </script>
+
 
   <script src="src/js/script.js"></script>
 </body>
