@@ -5,17 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="src/output.css" rel="stylesheet" />
-  <title>Spangantyo</title>
+  <link rel="shortcut icon" href="./src/logo/spangantyo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <title>Spangantyo.com</title>
+  <script>
+    document.documentElement.classList.toggle(
+      'dark',
+      localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    )
+  </script>
 </head>
 
-<body class="bg-dark">
+<body class="dark:bg-dark bg-slate-100">
 
   <!-- navbar -->
   <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
     <div class="container">
       <div class="flex items-center justify-between relative">
         <div class="px-4">
-          <a href="#home" class="font-bold text-lg text-primary flex items-center gap-2 py-6">
+          <a href="#home" class="font-bold text-lg text-tertiary flex items-center gap-2 py-6 dark:text-primary">
             <img src="./src/logo/spangantyo.png" width="30" height="100%" alt="" />
             <span>pangantyo</span>
           </a>
@@ -29,31 +37,45 @@
           </button>
 
           <nav id="nav-menu"
-            class="hidden absolute py-5 bg-dark shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+            class="hidden absolute py-5 shadow-lg bg-white dark:bg-dark rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
             <ul class="block lg:flex">
-              <li class="group">
+              <li class="group text-dark dark:text-white">
                 <a href="#home"
-                  class="text-base text-white py-2 mx-8 flex group-hover:text-primary transition-all ease-in-out duration-300">Home</a>
+                  class="text-base py-2 mx-8 flex group-hover:text-tertiary dark:group-hover:text-primary transition-all ease-in-out duration-300">Home</a>
               </li>
-              <li class="group">
+              <li class="group text-dark dark:text-white">
                 <a href="#about"
-                  class="text-base text-white py-2 mx-8 flex group-hover:text-primary transition-all ease-in-out duration-300">About</a>
+                  class="text-base py-2 mx-8 flex group-hover:text-tertiary dark:group-hover:text-primary transition-all ease-in-out duration-300">About</a>
               </li>
-              <li class="group">
+              <li class="group text-dark dark:text-white">
                 <a href="#portfolio"
-                  class="text-base text-white py-2 mx-8 flex group-hover:text-primary transition-all ease-in-out duration-300">Portfolio</a>
+                  class="text-base py-2 mx-8 flex group-hover:text-tertiary dark:group-hover:text-primary transition-all ease-in-out duration-300">Portfolio</a>
               </li>
-              <li class="group">
+              <li class="group text-dark dark:text-white">
                 <a href="#skills"
-                  class="text-base text-white py-2 mx-8 flex group-hover:text-primary transition-all ease-in-out duration-300">Skills</a>
+                  class="text-base py-2 mx-8 flex group-hover:text-tertiary dark:group-hover:text-primary transition-all ease-in-out duration-300">Skills</a>
               </li>
-              <li class="group">
+              <li class="group text-dark dark:text-white">
                 <a href="#blog"
-                  class="text-base text-white py-2 mx-8 flex group-hover:text-primary transition-all ease-in-out duration-300">Blog</a>
+                  class="text-base py-2 mx-8 flex group-hover:text-tertiary dark:group-hover:text-primary transition-all ease-in-out duration-300">Blog</a>
               </li>
-              <li class="group">
+              <li class="group text-dark dark:text-white">
                 <a href="#contact"
-                  class="text-base text-white py-2 mx-8 flex group-hover:text-primary transition-all ease-in-out duration-300">Contact</a>
+                  class="text-base py-2 mx-8 flex group-hover:text-tertiary dark:group-hover:text-primary transition-all ease-in-out duration-300">Contact</a>
+              </li>
+              <li class="flex items-center pl-8 pt-2 lg:pt-0">
+                <div class="flex">
+                  <span class="mr-2 text-sm text-slate-500">Light</span>
+                  <input type="checkbox" class="hidden" id="dark-toggle">
+                  <label for="dark-toggle">
+                    <div class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1">
+                      <div class="toggle-circle h-4 w-4 rounded-full bg-white transition-all duration-300 ease-in-out">
+
+                      </div>
+                    </div>
+                  </label>
+                  <span class="ml-2 text-sm text-slate-500">dark</span>
+                </div>
               </li>
             </ul>
           </nav>
@@ -64,17 +86,35 @@
   </header>
   <!-- close navbar -->
 
-
   <!-- home section -->
-
   <section id="home" class="pt-5 lg:pt-36 md:pt-36 pb-36">
     <div class="container">
       <div class="flex flex-wrap mt-20 sm:mt-0">
         <div class="w-full self-end px-4 mb-5 lg:w-1/2">
           <div class="relative mt-10 lg:mt-9 lg:right-0">
-            <img src="./src/img/fushiguro.png" alt="fushiguro" class="max-w-full rounded-3xl mx-auto" />
-            <span class="absolute -bottom-0 -z-10 left-1/2 -translate-x-1/2 md:scale-125">
+
+            <img src="./src/img/light-mode.png" alt="fushiguro" class="max-w-full rounded-3xl mx-auto dark:hidden" />
+            <img src="./src/img/dark-mode.png" alt="fushiguro"
+              class="max-w-full rounded-3xl mx-auto hidden dark:block" />
+
+            <!-- light mode -->
+            <span class="absolute -bottom-0 -z-10 left-1/2 -translate-x-1/2  md:scale-125 dark:hidden ">
+              <svg viewBox="0 0 200 200" width="400" height="400" class="fill-tertiary"
+                xmlns="http://www.w3.org/2000/svg">
+
+                <!-- Path dengan gradient -->
+                <path
+                  d="M59.9,-52.8C75.8,-43.9,85.6,-22,83.2,-2.5C80.7,17,65.9,34,50,44.5C34,55,17,59,-2.7,61.7C-22.4,64.3,-44.7,65.7,-58.5,55.2C-72.2,44.7,-77.4,22.4,-75,2.4C-72.7,-17.6,-62.7,-35.2,-49,-44.1C-35.2,-52.9,-17.6,-53.1,2.2,-55.3C22,-57.5,43.9,-61.7,59.9,-52.8Z"
+                  transform="translate(100 100)" />
+              </svg>
+
+            </span>
+            <!-- close light mode -->
+
+            <!-- dark mode -->
+            <span class="absolute -bottom-0 -z-10 left-1/2 -translate-x-1/2  md:scale-125 hidden dark:block ">
               <svg viewBox="0 0 200 200" width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+
                 <defs>
                   <linearGradient id="gradient-fill" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style="stop-color: #4f46e5; stop-opacity: 1" />
@@ -87,14 +127,17 @@
                   d="M59.9,-52.8C75.8,-43.9,85.6,-22,83.2,-2.5C80.7,17,65.9,34,50,44.5C34,55,17,59,-2.7,61.7C-22.4,64.3,-44.7,65.7,-58.5,55.2C-72.2,44.7,-77.4,22.4,-75,2.4C-72.7,-17.6,-62.7,-35.2,-49,-44.1C-35.2,-52.9,-17.6,-53.1,2.2,-55.3C22,-57.5,43.9,-61.7,59.9,-52.8Z"
                   transform="translate(100 100)" />
               </svg>
+
             </span>
+            <!-- close dark mode -->
+
           </div>
         </div>
 
         <div class="w-full self-center px-4 lg:w-1/2">
-          <h1 class="text-base font-semibold text-primary mb-3 md:text-xl">
+          <h1 class="text-base font-semibold text-amber-400 dark:text-primary mb-3 md:text-xl">
             Hello everyone, I am
-            <span class="block font-bold text-white text-4xl mt-1 lg:text-5xl">Spangantyo</span>
+            <span class="block text-dark dark:text-white text-4xl mt-1 lg:text-5xl">Spangantyo</span>
           </h1>
 
           <h2 class="font-medium text-secondary mb-3 text-lg lg:text-2xl capitalize">
@@ -108,7 +151,8 @@
 
           <div class="flex items-center mb-4">
             <a href="#about"
-              class="text-base font-semibold text-white py-3 px-8 rounded-lg hover:shadow-lg hover:opacity-85 transition duration-300 ease-in-out capitalize bg-gradient-to-r from-indigo-600 to-pink-500 flex items-center lg:py-3 lg:px-6 max-w-fit mr-3">
+              class="text-base font-semibold text-white py-3 px-6 lg:py-4 lg:px-8 rounded-lg shadow-sm hover:shadow-lg hover:opacity-85 transition duration-300 ease-in-out capitalize bg-tertiary dark:bg-gradient-primary flex items-center max-w-fit mr-3">
+
               <!-- Ikon SVG -->
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 mr-3">
                 <path
@@ -120,7 +164,7 @@
             </a>
 
             <a href="#contact"
-              class="text-base font-semibold py-3 px-8 rounded-lg hover:shadow-lg hover:opacity-85 transition duration-300 ease-in-out capitalize border border-primary text-primary hover:bg-gradient-to-r from-indigo-600 to-pink-500 hover:text-white hover:border-0 flex items-center lg:py-3 lg:px-6 max-w-fit">
+              class="text-base font-semibold py-3 px-6 lg:py-4 lg:px-8 rounded-lg shadow-sm  hover:shadow-sm hover:opacity-85 transition duration-300 ease-in-out capitalize border text-tertiary border-tertiary hover:text-white hover:border-opacity-0 hover:bg-tertiary dark:text-primary dark:border-primary dark:hover:bg-primary dark:hover:border-opacity-0 dark:hover:text-white flex items-center max-w-fit">
               <!-- Ikon SVG -->
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 mr-3">
                 <path fill-rule="evenodd"
@@ -139,7 +183,7 @@
 
             <!-- youtube -->
             <a href="https://www.youtube.com/@jenaissante13" target=" _blank"
-              class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border bg-indigo-600 text-slate-200 border-indigo-600 hover:border-pink-500 hover:bg-pink-500 hover:text-white">
+              class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center bg-transparent text-slate-500 border border-slate-500 hover:border-opacity-0 hover:shadow-sm hover:bg-tertiary hover:text-white dark:hover:bg-primary dark:text-slate-300 dark:border-slate-300">
               <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title>YouTube</title>
                 <path
@@ -150,7 +194,7 @@
 
             <!-- instagran -->
             <a href="https://www.instagram.com/pngtyo_?igsh=MWJqa2Fmdzk0aWtkaQ==" target=" _blank"
-              class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border bg-indigo-600 text-slate-200 border-indigo-600 hover:border-pink-500 hover:bg-pink-500 hover:text-white">
+              class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center bg-transparent text-slate-500 border border-slate-500 hover:border-opacity-0 hover:shadow-sm hover:bg-tertiary hover:text-white dark:hover:bg-primary dark:text-slate-300 dark:border-slate-300">
               <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title>Instagram</title>
                 <path
@@ -161,7 +205,7 @@
 
             <!-- whatsapp -->
             <a href="https://wa.me/6287797929789" target=" _blank"
-              class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border bg-indigo-600 text-slate-200 border-indigo-600 hover:border-pink-500 hover:bg-pink-500 hover:text-white">
+              class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center bg-transparent text-slate-500 border border-slate-500 hover:border-opacity-0 hover:shadow-sm hover:bg-tertiary hover:text-white dark:hover:bg-primary dark:text-slate-300 dark:border-slate-300">
               <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title>WhatsApp</title>
                 <path
@@ -174,21 +218,29 @@
       </div>
     </div>
   </section>
-
   <!-- close home section -->
 
   <!-- waves -->
   <div class="container-none -mt-28 md:w-full">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 1440 320">
       <defs>
+        <!-- light mdde -->
         <linearGradient id="grad1" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" style="stop-color: #8b5cf6; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #a855f7; stop-opacity: 1" />
+        </linearGradient>
+        <!-- close light mode -->
+
+        <!-- dark mode -->
+        <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="0%">
           <stop offset="0%" style="stop-color: #ec4899; stop-opacity: 1" />
           <stop offset="100%" style="stop-color: #4f46e5; stop-opacity: 1" />
         </linearGradient>
+        <!-- close dark mode -->
+
       </defs>
 
-      <!-- Path dengan gradien horizontal dan vertikal -->
-      <path fill="url(#grad1)"
+      <path fill="url(#grad1)" class="dark:fill-[url(#grad2)]"
         d="M0,192L17.1,165.3C34.3,139,69,85,103,80C137.1,75,171,117,206,149.3C240,181,274,203,309,197.3C342.9,192,377,160,411,122.7C445.7,85,480,43,514,48C548.6,53,583,107,617,122.7C651.4,139,686,117,720,133.3C754.3,149,789,203,823,229.3C857.1,256,891,256,926,245.3C960,235,994,213,1029,197.3C1062.9,181,1097,171,1131,165.3C1165.7,160,1200,160,1234,181.3C1268.6,203,1303,245,1337,229.3C1371.4,213,1406,139,1423,101.3L1440,64L1440,320L1422.9,320C1405.7,320,1371,320,1337,320C1302.9,320,1269,320,1234,320C1200,320,1166,320,1131,320C1097.1,320,1063,320,1029,320C994.3,320,960,320,926,320C891.4,320,857,320,823,320C788.6,320,754,320,720,320C685.7,320,651,320,617,320C582.9,320,549,320,514,320C480,320,446,320,411,320C377.1,320,343,320,309,320C274.3,320,240,320,206,320C171.4,320,137,320,103,320C68.6,320,34,320,17,320L0,320Z">
       </path>
     </svg>
@@ -196,11 +248,14 @@
   <!-- close waver -->
 
   <!-- about -->
-  <section id="about" class="pt-36 pb-32 -mt-3 bg-gradient-to-r from-indigo-600 to-pink-500">
-    <div class="container lg:mt-10 md:mt-10">
+  <section id="about" class="pt-36 pb-32 -mt-3 bg-gradient-tertiary dark:bg-gradient-primary">
+    <div class="container lg:mt-5 md:mt-10">
+
       <div class="flex flex-wrap">
-        <div class="w-full px-4 mb-10 lg:w-1/2">
-          <h4 class="font-bold text-primary mb-3 uppercase text-lg">
+
+        <div class="w-full px-4 mb-10 lg:w-1/2" data-aos="zoom-in-right" data-aos-offset="300"
+          data-aos-easing="ease-in-out">
+          <h4 class="font-bold text-amber-400 dark:text-primary mb-3 uppercase text-lg">
             about me
           </h4>
           <h2 class="font-bold text-white text-3xl capitalize mb-5 max-w-md lg:text-4xl">
@@ -215,7 +270,7 @@
           </p>
         </div>
 
-        <div class="w-full px-4 lg:w-1/2">
+        <div class="w-full px-4 lg:w-1/2" data-aos="zoom-in-left" data-aos-offset="300" data-aos-easing="ease-in-out">
           <h3 class="font-semibold text-white mb-4 text-2xl capitalize lg:text-3xl lg:pt-10">
             let's be friends
           </h3>
@@ -230,7 +285,7 @@
           <div class="flex items-center">
             <!-- youtube -->
             <a href="https://www.youtube.com/@jenaissante13" target=" _blank"
-              class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-white border-white hover:border-primary hover:bg-primary hover:text-white">
+              class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-white border-white hover:border-amber-400 hover:bg-amber-400 dark:hover:border-primary dark:hover:bg-primary dark:hover:text-white">
               <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title>YouTube</title>
                 <path
@@ -241,7 +296,7 @@
 
             <!-- instagran -->
             <a href="https://www.instagram.com/pngtyo_?igsh=MWJqa2Fmdzk0aWtkaQ==" target=" _blank"
-              class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-white border-white hover:border-primary hover:bg-primary hover:text-white">
+              class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-white border-white hover:border-amber-400 hover:bg-amber-400 dark:hover:border-primary dark:hover:bg-primary dark:hover:text-white">
               <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title>Instagram</title>
                 <path
@@ -252,7 +307,7 @@
 
             <!-- whatsapp -->
             <a href="https://wa.me/6287797929789" target=" _blank"
-              class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-white border-white hover:border-primary hover:bg-primary hover:text-white">
+              class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-white border-white hover:border-amber-400 hover:bg-amber-400 dark:hover:border-primary dark:hover:bg-primary dark:hover:text-white">
               <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title>WhatsApp</title>
                 <path
@@ -266,8 +321,8 @@
 
 
         <!-- hobby -->
-        <w class="full px-4 mt-10">
-          <h4 class="font-bold text-primary mb-3 uppercase text-lg">
+        <w class="full px-4 mt-10" data-aos="zoom-in-up" data-aos-offset="300" data-aos-easing="ease-in-out">
+          <h4 class="font-bold text-amber-400 dark:text-primary mb-3 uppercase text-lg">
             hobby
           </h4>
           <h3 class="font-semibold text-white mb-4 text-2xl capitalize lg:text-3xl">
@@ -282,19 +337,19 @@
           </p>
         </w>
 
-
-        <div class="w-full px-4">
+        <div class="w-full px-4" data-aos="zoom-in-up" data-aos-offset="300" data-aos-easing="ease-in-out">
           <div
             class="flex items-center flex-wrap justify-center px-4 py-8 lg:justify-start bg-slate-200 bg-opacity-35 rounded-lg">
 
-            <div class="w-full mt-4 lg:mt-0 lg:w-1/4 md:w-1/2 px-4 mb-4 relative group">
+            <div class="w-full mt-4 lg:mt-0 lg:w-1/4 md:w-1/2 px-4 mb-4 relative group" data-aos="flip-left"
+              data-aos-offset="300" data-aos-easing="ease-in-out" data-aos-delay="50">
               <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
                 <div class="py-6 px-4">
                   <h3>
                     <a href="https://id.wikipedia.org/wiki/Biliar" target="_blank"
-                      class="flex items-center space-x-2 group-hover:text-primary capitalize mb-2 font-semibold text-lg md:text-xl lg:text-xl text-dark transition-all duration-300">
+                      class="flex items-center space-x-2 dark:group-hover:text-primary group-hover:text-amber-400 capitalize mb-2 font-semibold text-lg md:text-xl lg:text-xl text-dark transition-all duration-300">
                       <svg
-                        class="w-6 lg:w-10 md:w-10 h-auto fill-slate-900 group-hover:fill-pink-500 transition-all duration-300"
+                        class="w-6 lg:w-10 md:w-10 h-auto fill-slate-900 dark:group-hover:fill-pink-500 group-hover:fill-amber-400 transition-all duration-300"
                         viewBox="0 0 477.778 477.778" xmlns="http://www.w3.org/2000/svg">
                         <g>
                           <path
@@ -312,7 +367,7 @@
                   </p>
 
                   <div
-                    class="w-11 h-11 group group-hover:rotate-45 group-hover:w-14 group-hover:h-14 group-hover:transition-transform group-hover:ease-in-out group-hover:duration-500 rounded-full absolute flex -bottom-2 -right-0 bg-primary transition-all duration-300">
+                    class="w-11 h-11 group group-hover:rotate-45 group-hover:w-14 group-hover:h-14 group-hover:transition-transform group-hover:ease-in-out group-hover:duration-500 rounded-full absolute flex -bottom-2 -right-0 bg-amber-400 dark:bg-primary transition-all duration-300">
                     <a href="https://id.wikipedia.org/wiki/Biliar" target="_blank">
                       <svg class="fill-white w-full p-2 transition-all duration-300" viewBox="-8.5 0 32 32"
                         version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -324,16 +379,16 @@
               </div>
             </div>
 
-
-            <div class="w-full mt-4 lg:mt-0 lg:w-1/4 md:w-1/2 px-4 mb-4 relative group">
+            <div class="w-full mt-4 lg:mt-0 lg:w-1/4 md:w-1/2 px-4 mb-4 relative group" data-aos="flip-left"
+              data-aos-offset="300" data-aos-easing="ease-in-out" data-aos-delay="50">
               <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
 
                 <div class="py-6 px-4">
                   <h3>
                     <a href="https://id.wikipedia.org/wiki/Permainan_daring" target="_blank"
-                      class="flex items-center space-x-2 group-hover:text-primary capitalize mb-2 font-semibold text-lg md:text-xl lg:text-xl text-dark">
+                      class="flex items-center space-x-2 dark:group-hover:text-primary group-hover:text-amber-400 capitalize mb-2 font-semibold text-lg md:text-xl lg:text-xl text-dark">
                       <svg
-                        class="w-6 lg:w-10 md:w-10 h-auto fill-slate-900 group-hover:fill-pink-500 transition-all duration-300"
+                        class="w-6 lg:w-10 md:w-10 h-auto fill-slate-900 dark:group-hover:fill-pink-500 group-hover:fill-amber-400 transition-all duration-300"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                         <g>
                           <path
@@ -352,7 +407,7 @@
                   </p>
 
                   <div
-                    class="w-11 h-11 group group-hover:rotate-45 group-hover:w-14 group-hover:h-14 group-hover:transition-transform group-hover:ease-in-out group-hover:duration-500 rounded-full absolute flex -bottom-2 -right-0 bg-primary transition-all duration-300">
+                    class="w-11 h-11 group group-hover:rotate-45 group-hover:w-14 group-hover:h-14 group-hover:transition-transform group-hover:ease-in-out group-hover:duration-500 rounded-full absolute flex -bottom-2 -right-0 bg-amber-400 dark:bg-primary transition-all duration-300">
                     <a href="https://id.wikipedia.org/wiki/Permainan_daring" target="_blank">
                       <svg class="fill-white w-full p-2" viewBox="-8.5 0 32 32" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -366,15 +421,16 @@
               </div>
             </div>
 
-            <div class="w-full mt-4 lg:mt-0 lg:w-1/4 md:w-1/2 px-4 mb-4 relative group">
+            <div class="w-full mt-4 lg:mt-0 lg:w-1/4 md:w-1/2 px-4 mb-4 relative group" data-aos="flip-left"
+              data-aos-offset="300" data-aos-easing="ease-in-out" data-aos-delay="50">
               <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
 
                 <div class="py-6 px-4">
-                  <h3>
+                  <h>
                     <a href="https://id.wikipedia.org/wiki/Perjalanan" target="_blank"
-                      class="flex items-center space-x-2 group-hover:text-primary capitalize mb-2 font-semibold text-lg md:text-xl lg:text-xl text-dark">
+                      class="flex items-center space-x-2 dark:group-hover:text-primary group-hover:text-amber-400 capitalize mb-2 font-semibold text-lg md:text-xl lg:text-xl text-dark">
                       <svg
-                        class="w-6 lg:w-10 md:w-10 h-auto fill-slate-900 group-hover:fill-pink-500 transition-all duration-300"
+                        class="w-6 lg:w-10 md:w-10 h-auto fill-slate-900 dark:group-hover:fill-pink-500 group-hover:fill-amber-400 transition-all duration-300"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g>
                           <path d="M24,0 L24,24 L0,24 L0,0 L24,0 Z" fill="none" />
@@ -389,14 +445,14 @@
                       <span>Traveling</span>
                     </a>
 
-                  </h3>
+                  </h>
 
                   <p class="font-medium text-secondary text-sm md:text-base lg:text-base transition-all duration-300">
                     I like traveling because by traveling I get new experiences in various regions.
                   </p>
 
                   <div
-                    class="w-11 h-11 group group-hover:rotate-45 group-hover:w-14 group-hover:h-14 group-hover:transition-transform group-hover:ease-in-out group-hover:duration-500 rounded-full absolute flex -bottom-2 -right-0 bg-primary transition-all duration-300">
+                    class="w-11 h-11 group group-hover:rotate-45 group-hover:w-14 group-hover:h-14 group-hover:transition-transform group-hover:ease-in-out group-hover:duration-500 rounded-full absolute flex -bottom-2 -right-0 bg-amber-400 dark:bg-primary transition-all duration-300">
                     <a href="https://id.wikipedia.org/wiki/Perjalanan" target="_blank">
                       <svg class="fill-white w-full p-2" viewBox="-8.5 0 32 32" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -410,15 +466,16 @@
               </div>
             </div>
 
-            <div class="w-full mt-4 lg:mt-0 lg:w-1/4 md:w-1/2 px-4 mb-4 relative group">
+            <div class="w-full mt-4 lg:mt-0 lg:w-1/4 md:w-1/2 px-4 mb-4 relative group" data-aos="flip-left"
+              data-aos-offset="300" data-aos-easing="ease-in-out" data-aos-delay="50">
               <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
 
                 <div class="py-6 px-4">
                   <h3>
                     <a href="https://id.wikipedia.org/wiki/Permainan_kamar_gelap" target="_blank"
-                      class="flex items-center space-x-2 group-hover:text-primary capitalize mb-2 font-semibold text-lg md:text-xl lg:text-xl text-dark">
+                      class="flex items-center space-x-2 dark:group-hover:text-primary group-hover:text-amber-400 capitalize mb-2 font-semibold text-lg md:text-xl lg:text-xl text-dark">
                       <svg
-                        class="w-6 lg:w-10 md:w-10 h-auto fill-slate-900 group-hover:fill-pink-500 transition-all duration-300"
+                        class="w-6 lg:w-10 md:w-10 h-auto fill-slate-900 dark:group-hover:fill-pink-500 group-hover:fill-amber-400 transition-all duration-300"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
                         <g>
                           <circle cx="28.9" cy="23.2" r="11.3" />
@@ -440,7 +497,7 @@
                   </p>
 
                   <div
-                    class="w-11 h-11 group group-hover:rotate-45 group-hover:w-14 group-hover:h-14 group-hover:transition-transform group-hover:ease-in-out group-hover:duration-500 rounded-full absolute flex -bottom-2 -right-0 bg-primary transition-all duration-300">
+                    class="w-11 h-11 group group-hover:rotate-45 group-hover:w-14 group-hover:h-14 group-hover:transition-transform group-hover:ease-in-out group-hover:duration-500 rounded-full absolute flex -bottom-2 -right-0 bg-amber-400 dark:bg-primary transition-all duration-300">
                     <a href="https://id.wikipedia.org/wiki/Permainan_kamar_gelap" target="_blank">
                       <svg class="fill-white w-full p-2" viewBox="-8.5 0 32 32" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -462,41 +519,47 @@
 
 
       </div>
+
     </div>
   </section>
   <!-- close about -->
 
   <!-- waves -->
   <div class="container-none -mt-20 sm:-mt-1 md:w-full">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 1440 320">
       <defs>
+
         <linearGradient id="grad1" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" style="stop-color: #8b5cf6; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #a855f7; stop-opacity: 1" />
+        </linearGradient>
+
+        <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="0%">
           <stop offset="0%" style="stop-color: #ec4899; stop-opacity: 1" />
           <stop offset="100%" style="stop-color: #4f46e5; stop-opacity: 1" />
         </linearGradient>
-      </defs>
 
-      <!-- Path dengan gradien horizontal dan vertikal -->
-      <path fill="url(#grad1)"
-        d="M0,96L120,106.7C240,117,480,139,720,144C960,149,1200,139,1320,133.3L1440,128L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z">
+      </defs>
+      <path fill="url(#grad1)" class="dark:fill-[url(#grad2)]""
+        d="
+        M0,96L120,106.7C240,117,480,139,720,144C960,149,1200,139,1320,133.3L1440,128L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z">
       </path>
+
     </svg>
   </div>
   <!-- close waver -->
 
   <!-- Portfolio -->
-  <section id="portfolio" class="pt-10 lg:pt-36 md:pt-36 lg:-mt-72 sm:-mt-40  -mt-10 pb-16 -z-50 bg-dark">
+  <section id="portfolio"
+    class="pt-10 lg:pt-36 md:pt-36 lg:-mt-96 sm:-mt-52  -mt-10 pb-16 -z-50 bg-slate-200 dark:bg-dark">
     <div class="container">
 
-
-
-
-      <div class="w-full px-4 mt-20">
+      <div class="w-full px-4 mt-20" data-aos="zoom-in-up" data-aos-offset="300" data-aos-easing="ease-in-out">
         <div class="mx-auto text-center">
-          <h4 class="font-semibold text-lg text-primary mb-2 uppercase">
+          <h4 class="font-semibold text-lg text-amber-400 dark:text-primary mb-2 uppercase">
             portfolio
           </h4>
-          <h2 class="font-bold text-white mb-4 text-3xl sm:text-3xl lg:text-4xl capitalize">
+          <h2 class="font-bold text-dark dark:text-white mb-4 text-3xl sm:text-3xl lg:text-4xl capitalize">
             latest project
           </h2>
           <p class="font-medium text-md text-secondary md:text-lg text-justify">
@@ -519,12 +582,14 @@
 
           <!-- Gambar 1 -->
           <div
-            class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 p-5 relative overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 group">
+            class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 p-5 relative overflow-hidden rounded-lg transform transition-all duration-300 group"
+            data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-out">
             <img src="./src/project/klinik.png" alt="Image 1"
               class="w-full h-full object-cover transition-all rounded-xl duration-300 group-hover:filter group-hover:brightness-50 group-hover:scale-105" />
             <div
               class="absolute inset-0 flex p-5 flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-bold text-lg lg:text-3xl md:text-lg mt-5 mb-2 text-primary p-3 rounded-lg">
+              <h3
+                class="font-bold text-lg lg:text-3xl md:text-lg mt-5 mb-2 text-amber-400 dark:text-primary p-3 rounded-lg">
                 CLINIC
               </h3>
             </div>
@@ -532,12 +597,14 @@
 
           <!-- Gambar 2 -->
           <div
-            class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 p-5 relative overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 group">
+            class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 p-5 relative overflow-hidden rounded-lg transform transition-all duration-300 group"
+            data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-out">
             <img src="./src/project/minum.png" alt="Image 1"
               class="w-full h-full object-cover transition-all rounded-xl duration-300 group-hover:filter group-hover:brightness-50 group-hover:scale-105" />
             <div
               class="absolute inset-0 flex p-5 flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-bold text-lg lg:text-3xl md:text-lg mt-5 mb-2 text-primary p-3 rounded-lg">
+              <h3
+                class="font-bold text-lg lg:text-3xl md:text-lg mt-5 mb-2 text-amber-400 dark:text-primary p-3 rounded-lg">
                 DRINKS
               </h3>
             </div>
@@ -545,12 +612,14 @@
 
           <!-- Gambar 1 -->
           <div
-            class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 p-5 relative overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 group">
+            class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 p-5 relative overflow-hidden rounded-lg transform transition-all duration-300 group"
+            data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-out">
             <img src="./src/project/wisata.png" alt="Image 1"
               class="w-full h-full object-cover transition-all rounded-xl duration-300 group-hover:filter group-hover:brightness-50 group-hover:scale-105" />
             <div
               class="absolute inset-0 flex p-5 flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-bold text-lg lg:text-3xl md:text-lg mt-5 mb-2 text-primary p-3 rounded-lg">
+              <h3
+                class="font-bold text-lg lg:text-3xl md:text-lg mt-5 mb-2 text-amber-400 dark:text-primary p-3 rounded-lg">
                 TRAVEL
               </h3>
             </div>
@@ -558,12 +627,14 @@
 
           <!-- Gambar 2 -->
           <div
-            class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 p-5 relative overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 group">
+            class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 p-5 relative overflow-hidden rounded-lg transform transition-all duration-300 group"
+            data-aos="fade-up-right" data-aos-offset="300" data-aos-easing="ease-in-out">
             <img src="./src/project/z-tech.png" alt="Image 1"
               class="w-full h-full object-cover transition-all rounded-xl duration-300 group-hover:filter group-hover:brightness-50 group-hover:scale-105" />
             <div
               class="absolute inset-0 flex p-5 flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-bold text-lg lg:text-3xl md:text-lg mt-5 mb-2 text-primary p-3 rounded-lg">
+              <h3
+                class="font-bold text-lg lg:text-3xl md:text-lg mt-5 mb-2 text-amber-400 dark:text-primary p-3 rounded-lg">
                 Z-TECH
               </h3>
             </div>
@@ -571,12 +642,14 @@
 
           <!-- Gambar 2 -->
           <div
-            class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 p-5 relative overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 group">
+            class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 p-5 relative overflow-hidden rounded-lg transform transition-all duration-300 group"
+            data-aos="fade-up-left" data-aos-offset="300" data-aos-easing="ease-in-out">
             <img src="./src/project/klinik.png" alt="Image 1"
               class="w-full h-full object-cover transition-all rounded-xl duration-300 group-hover:filter group-hover:brightness-50 group-hover:scale-105" />
             <div
               class="absolute inset-0 flex p-5 flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-bold text-lg lg:text-3xl md:text-lg mt-5 mb-2 text-primary p-3 rounded-lg">
+              <h3
+                class="font-bold text-lg lg:text-3xl md:text-lg mt-5 mb-2 text-amber-400 dark:text-primary p-3 rounded-lg">
                 CLINIC
               </h3>
             </div>
@@ -600,16 +673,17 @@
   <!-- close portfolio -->
 
   <!-- skill -->
-  <section id="skills" class="pt-36 pb-32 bg-gradient-to-b from-dark to-slate-800">
+  <section id="skills"
+    class="pt-36 pb-32 bg-gradient-to-b from-slate-200 to-slate-50 dark:bg-gradient-to-t dark:from-slate-800 dark:to-slate-900">
     <div class="container">
 
 
-      <div class="w-full px-4 lg:mt-15">
+      <div class="w-full px-4 lg:mt-16" data-aos="zoom-out" data-aos-offset="300" data-aos-easing="ease-in-out">
         <div class="mx-auto text-center mb-16">
-          <h4 class="font-semibold text-lg text-primary mb-2 uppercase">
+          <h4 class="font-semibold text-lg text-tertiary dark:text-primary mb-2 uppercase">
             skills
           </h4>
-          <h2 class="font-bold text-white mb-4 text-3xl sm:text-3xl lg:text-4xl capitalize">
+          <h2 class="font-bold text-dark dark:text-white mb-4 text-3xl sm:text-3xl lg:text-4xl capitalize">
             skills mastery
           </h2>
           <p class="font-medium text-md text-secondary text-justify md:text-lg"><span class="mr-10"></span>
@@ -628,38 +702,64 @@
 
       <div class="w-full px-4">
         <div class="grid lg:grid-cols-6 gap-4 grid-cols-2">
-          <div class="col-span-2  rounded-lg bg-slate-200 p-4 group">
-            <img src="./src/portfolio/1.jpg" alt="Image 1"
+
+          <!-- 3 -->
+          <div class="col-span-2  rounded-lg bg-amber-400/15 dark:bg-slate-100 p-4 group" data-aos="fade-right"
+            data-aos-offset=" 300" data-aos-easing="ease-in-out" data-aos-delay="150">
+            <img src="./src/skills/skill-img/1.png" alt="Image 1"
               class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105">
           </div>
-          <div class="row-span-2 rounded-lg row-end-6 lg:row-end-1 lg:row-span-2 col-span-2 bg-slate-200 p-4 group">
-            <img src="./src/portfolio/2.jpg" alt="Image 1"
+
+          <!-- 4 -->
+          <div
+            class="row-span-2 rounded-lg row-end-6 lg:row-end-1 lg:row-span-2 col-span-2 bg-amber-400/15 dark:bg-slate-100 p-4 group"
+            data-aos="fade-right" data-aos-offset=" 300" data-aos-easing="ease-in-out" data-aos-delay="200">
+            <img src="./src/skills/skill-img/2.png" alt="Image 1"
               class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105">
           </div>
-          <div class="col-span-1 rounded-lg bg-slate-200 p-4 group">
-            <img src="./src/portfolio/3.jpg" alt="Image 1"
+
+          <!-- 2 -->
+          <div class="col-span-1 rounded-lg bg-amber-400/15 dark:bg-slate-100 p-4 group" data-aos="fade-right"
+            data-aos-offset=" 300" data-aos-easing="ease-in-out" data-aos-delay="100">
+            <img src="./src/skills/skill-img/3.png" alt="Image 1"
               class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-110">
           </div>
-          <div class="col-span-1 row-span-2 rounded-lg bg-slate-200 p-4 group">
-            <img src="./src/portfolio/4.jpg" alt="Image 1"
+
+          <!-- 1 -->
+          <div class="col-span-1 row-span-2 rounded-lg bg-amber-400/15 dark:bg-slate-100 p-4 group"
+            data-aos="fade-right" data-aos-offset=" 300" data-aos-easing="ease-in-out" data-aos-delay="50">
+            <img src="./src/skills/skill-img/4.png" alt="Image 1"
               class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-110">
           </div>
-          <div class="row-span-1 rounded-lg bg-slate-200 p-4 group">
-            <img src="./src/portfolio/1.jpg" alt="Image 1"
+
+          <!-- 4 -->
+          <div class="row-span-1 rounded-lg bg-amber-400/15 dark:bg-slate-100 p-4 group" data-aos="fade-right"
+            data-aos-offset=" 300" data-aos-easing="ease-in-out" data-aos-delay="200">
+            <img src="./src/skills/skill-img/5.png" alt="Image 1"
               class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-110">
           </div>
-          <div class="col-span-1 rounded-lg bg-slate-200 p-4 group">
-            <img src="./src/portfolio/2.jpg" alt="Image 1"
+
+          <!-- 3 -->
+          <div class="col-span-1 rounded-lg bg-amber-400/15 dark:bg-slate-100 p-4 group" data-aos="fade-right"
+            data-aos-offset=" 300" data-aos-easing="ease-in-out" data-aos-delay="150">
+            <img src="./src/skills/skill-img/6.png" alt="Image 1"
               class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-110">
           </div>
-          <div class="col-span-1 rounded-lg bg-slate-200 p-4 group">
-            <img src="./src/portfolio/3.jpg" alt="Image 1"
+
+          <!-- 2 -->
+          <div class="col-span-1 rounded-lg bg-amber-400/15 dark:bg-slate-100 p-4 group" data-aos="fade-right"
+            data-aos-offset=" 300" data-aos-easing="ease-in-out" data-aos-delay="100">
+            <img src="./src/skills/skill-img/7.png" alt="Image 1"
               class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-110">
           </div>
-          <div class="col-span-2 lg:hidden lg:col-span-1 rounded-lg bg-slate-200 p-4 group">
-            <img src="./src/portfolio/3.jpg" alt="Image 1"
+
+
+          <div class="col-span-2 lg:hidden lg:col-span-1 rounded-lg bg-amber-400/15 dark:bg-slate-100 p-4 group"
+            data-aos="fade-right" data-aos-offset=" 300" data-aos-easing="ease-in-out" data-aos-delay="200">
+            <img src="./src/skills/skill-img/8.png" alt="Image 1"
               class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105">
           </div>
+
         </div>
 
       </div>
@@ -696,18 +796,18 @@
   <!-- close skill -->
 
   <!-- blog -->
-  <section id="blog" class="pt-36 pb-32 bg-gradient-to-b from-slate-800 to-dark">
+  <section id="blog" class="pt-36 pb-32 bg-slate-50 dark:bg-slate-800">
     <div class="container">
 
-      <div class="w-full px-4 lg:mt-10">
+      <div class="w-full px-4 lg:mt-10" data-aos="zoom-in-up" data-aos-offset=" 300" data-aos-easing="ease-in-out">
         <div class="mx-auto text-center mb-16">
-          <h4 class="font-semibold text-lg text-primary mb-2 uppercase">
+          <h4 class="font-semibold text-lg text-tertiary dark:text-primary mb-2 uppercase">
             blog
           </h4>
-          <h2 class="font-bold text-white mb-4 text-3xl sm:text-3xl lg:text-4xl capitalize">
+          <h2 class="font-bold text-dark dark:text-white mb-4 text-3xl sm:text-3xl lg:text-4xl capitalize">
             recent posts
           </h2>
-          <p class="font-medium text-md text-justify text-slate-300 md:text-lg">
+          <p class="font-medium text-md text-justify text-slate-400 dark:text-slate-300 md:text-lg">
             <span class="mr-10"> </span>
             This is a collection of the latest articles that you can access in full by pressing the button provided.
             These articles
@@ -718,28 +818,31 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap bg-white/20 p-10 rounded-lg">
+      <div class="flex flex-wrap bg-dark/10 dark:bg-white/20 p-10 rounded-lg" data-aos="zoom-out" data-aos-offset=" 300"
+        data-aos-easing="ease-in-out" data-aos-delay="0">
 
-        <div class="w-full px-4 lg:w-1/2 xl:w-1/4 group">
+        <div class="w-full px-4 lg:w-1/2 xl:w-1/4 group" data-aos="fade-right" data-aos-offset=" 300"
+          data-aos-easing="ease-in-out" data-aos-delay="200">
           <div
             class="bg-white rounded-xl shadow-lg mb-10 overflow-hidden transition-transform duration-300 group-hover:scale-105">
-            <img src="./src/portfolio/4.jpg" alt="yyy"
+            <img src="./src/blog/1.jpg" alt="yyy"
               class="w-full transition-transform duration-300 group-hover:scale-110" />
             <div class="py-8 px-6">
               <h3>
                 <a href=""
-                  class="block capitalize mb-3 font-semibold text-xl text-slate-700 group-hover:text-slate-950 truncate">Belajar
-                  coding dengan berbagai ilmu yang
+                  class="block capitalize mb-3 font-semibold text-xl text-slate-700 group-hover:text-slate-950 truncate">bermain
+                  billiard menyenangkan
                 </a>
               </h3>
-              <h5 class="text-xs font-bold text-pink-600 opacity-60 italic">Sunday, 23 june 2025</h5>
+              <h5 class="text-xs font-bold text-amber-500 dark:text-pink-600 opacity-60 italic" id="date-1">
+              </h5>
               <hr class="border border-slate-300 my-3">
               <p class="font-medium text-secondary text-base mb-5">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Porro, eius!
               </p>
               <a href=""
-                class="font-medium text-sm flex flex-wrap group-hover:font-semibold group-hover:text-indigo-600 group-hover:fill-indigo-600 fill-indigo-400 text-indigo-400 rounded-md capitalize">
+                class="font-medium text-sm flex flex-wrap group-hover:font-semibold group-hover:text-tertiary dark:group-hover:text-indigo-600 dark:group-hover:fill-indigo-600 group-hover:fill-tertiary dark:fill-indigo-400 fill-violet-400 text-violet-400 dark:text-indigo-400 rounded-md capitalize">
 
                 <span class="mr-2">More read</span>
 
@@ -753,27 +856,28 @@
           </div>
         </div>
 
-        <div class="w-full px-4 lg:w-1/2 xl:w-1/4 group">
+        <div class="w-full px-4 lg:w-1/2 xl:w-1/4 group" data-aos="fade-right" data-aos-offset=" 300"
+          data-aos-easing="ease-in-out" data-aos-delay="100">
           <div
             class="bg-white rounded-xl shadow-lg mb-10 overflow-hidden transition-transform duration-300 group-hover:scale-105">
-            <img src="./src/portfolio/4.jpg" alt="yyy"
+            <img src="./src/blog/1.jpg" alt="yyy"
               class="w-full transition-transform duration-300 group-hover:scale-110" />
             <div class="py-8 px-6">
               <h3>
                 <a href=""
-                  class="block capitalize mb-3 font-semibold text-xl text-slate-700 group-hover:text-slate-950 truncate">Belajar
-                  coding dengan berbagai ilmu yang
+                  class="block capitalize mb-3 font-semibold text-xl text-slate-700 group-hover:text-slate-950 truncate">bermain
+                  billiard menyenangkan
                 </a>
-
-                <h5 class="text-xs font-bold text-pink-600 opacity-60 italic">Sunday, 23 june 2025</h5>
               </h3>
+              <h5 class="text-xs font-bold text-amber-500 dark:text-pink-600 opacity-60 italic" id="date-2">
+              </h5>
               <hr class="border border-slate-300 my-3">
               <p class="font-medium text-secondary text-base mb-5">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Porro, eius!
               </p>
               <a href=""
-                class="font-medium text-sm flex flex-wrap group-hover:font-semibold group-hover:text-indigo-600 group-hover:fill-indigo-600 fill-indigo-400 text-indigo-400 rounded-md capitalize">
+                class="font-medium text-sm flex flex-wrap group-hover:font-semibold group-hover:text-tertiary dark:group-hover:text-indigo-600 dark:group-hover:fill-indigo-600 group-hover:fill-tertiary dark:fill-indigo-400 fill-violet-400 text-violet-400 dark:text-indigo-400 rounded-md capitalize">
 
                 <span class="mr-2">More read</span>
 
@@ -787,27 +891,28 @@
           </div>
         </div>
 
-        <div class="w-full px-4 lg:w-1/2 xl:w-1/4 group">
+        <div class="w-full px-4 lg:w-1/2 xl:w-1/4 group" data-aos="fade-left" data-aos-offset=" 300"
+          data-aos-easing="ease-in-out" data-aos-delay="100">
           <div
             class="bg-white rounded-xl shadow-lg mb-10 overflow-hidden transition-transform duration-300 group-hover:scale-105">
-            <img src="./src/portfolio/4.jpg" alt="yyy"
+            <img src="./src/blog/1.jpg" alt="yyy"
               class="w-full transition-transform duration-300 group-hover:scale-110" />
             <div class="py-8 px-6">
               <h3>
                 <a href=""
-                  class="block capitalize mb-3 font-semibold text-xl text-slate-700 group-hover:text-slate-950 truncate">Belajar
-                  coding dengan berbagai ilmu yang
+                  class="block capitalize mb-3 font-semibold text-xl text-slate-700 group-hover:text-slate-950 truncate">bermain
+                  billiard menyenangkan
                 </a>
-
-                <h5 class="text-xs font-bold text-pink-600 opacity-60 italic">Sunday, 23 june 2025</h5>
               </h3>
+              <h5 class="text-xs font-bold text-amber-500 dark:text-pink-600 opacity-60 italic" id="date-3">
+              </h5>
               <hr class="border border-slate-300 my-3">
               <p class="font-medium text-secondary text-base mb-5">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Porro, eius!
               </p>
               <a href=""
-                class="font-medium text-sm flex flex-wrap group-hover:font-semibold group-hover:text-indigo-600 group-hover:fill-indigo-600 fill-indigo-400 text-indigo-400 rounded-md capitalize">
+                class="font-medium text-sm flex flex-wrap group-hover:font-semibold group-hover:text-tertiary dark:group-hover:text-indigo-600 dark:group-hover:fill-indigo-600 group-hover:fill-tertiary dark:fill-indigo-400 fill-violet-400 text-violet-400 dark:text-indigo-400 rounded-md capitalize">
 
                 <span class="mr-2">More read</span>
 
@@ -821,27 +926,28 @@
           </div>
         </div>
 
-        <div class="w-full px-4 lg:w-1/2 xl:w-1/4 group">
+        <div class="w-full px-4 lg:w-1/2 xl:w-1/4 group" data-aos="fade-left" data-aos-offset=" 300"
+          data-aos-easing="ease-in-out" data-aos-delay="200">
           <div
             class="bg-white rounded-xl shadow-lg mb-10 overflow-hidden transition-transform duration-300 group-hover:scale-105">
-            <img src="./src/portfolio/4.jpg" alt="yyy"
+            <img src="./src/blog/1.jpg" alt="yyy"
               class="w-full transition-transform duration-300 group-hover:scale-110" />
             <div class="py-8 px-6">
               <h3>
                 <a href=""
-                  class="block capitalize mb-3 font-semibold text-xl text-slate-700 group-hover:text-slate-950 truncate">Belajar
-                  coding dengan berbagai ilmu yang
+                  class="block capitalize mb-3 font-semibold text-xl text-slate-700 group-hover:text-slate-950 truncate">bermain
+                  billiard menyenangkan
                 </a>
-
-                <h5 class="text-xs font-bold text-pink-600 opacity-60 italic">Sunday, 23 june 2025</h5>
               </h3>
+              <h5 class="text-xs font-bold text-amber-500 dark:text-pink-600 opacity-60 italic" id="date-4">
+              </h5>
               <hr class="border border-slate-300 my-3">
               <p class="font-medium text-secondary text-base mb-5">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Porro, eius!
               </p>
               <a href=""
-                class="font-medium text-sm flex flex-wrap group-hover:font-semibold group-hover:text-indigo-600 group-hover:fill-indigo-600 fill-indigo-400 text-indigo-400 rounded-md capitalize">
+                class="font-medium text-sm flex flex-wrap group-hover:font-semibold group-hover:text-tertiary dark:group-hover:text-indigo-600 dark:group-hover:fill-indigo-600 group-hover:fill-tertiary dark:fill-indigo-400 fill-violet-400 text-violet-400 dark:text-indigo-400 rounded-md capitalize">
 
                 <span class="mr-2">More read</span>
 
@@ -854,24 +960,30 @@
             </div>
           </div>
         </div>
+
+
+
       </div>
     </div>
   </section>
   <!-- close blog -->
 
   <!-- contact -->
-  <section id="contact" class="pt-36 pb-32 bg-dark">
+  <section id="contact"
+    class="pt-36 pb-32 bg-gradient-to-b from-slate-50 to-slate-200  dark:bg-gradient-to-b dark:from-slate-800 dark:to-dark">
     <div class="container">
 
-      <div class="w-full px-4">
+      <div class="w-full px-4" data-aos="zoom-out" data-aos-offset=" 300" data-aos-easing="ease-in-out"
+        data-aos-delay="0">
         <div class="mx-auto text-center mb-16">
-          <h4 class="font-semibold text-lg text-primary mb-2 uppercase">
+          <h4 class="font-semibold text-lg text-tertiary dark:text-primary mb-2 uppercase">
             Contact
           </h4>
-          <h2 class="font-bold text-white mb-4 text-3xl sm:text-3xl lg:text-4xl capitalize">
+          <h2 class="font-bold text-dark dark:text-white mb-4 text-3xl sm:text-3xl lg:text-4xl capitalize">
             Contact Me
           </h2>
-          <p class="font-medium text-md text-justify text-slate-300 md:text-lg"><span class="mr-10"></span>
+          <p class="font-medium text-md text-justify text-slate-400 dark:text-slate-300 md:text-lg"><span
+              class="mr-10"></span>
             If you have any questions or would like to talk further about a project or collaboration, please feel free
             to contact
             me. I am always open for discussion and ready to help you with the best solution. Please send a message, and
@@ -884,28 +996,30 @@
 
       <div class="w-full flex flex-wrap px-4">
 
-        <div class="w-full lg:w-1/2">
+        <div class="w-full lg:w-1/2" data-aos="fade-right" data-aos-offset=" 300" data-aos-easing="ease-in-out"
+          data-aos-delay="150">
           <form>
-            <div class="w-full bg-white/20 py-10 px-8 rounded-lg">
+            <div class="w-full dark:bg-white/20 bg-white py-10 px-8 rounded-lg">
               <div class="w-full px-4 mb-8">
-                <label for="name" class="text-base font-bold capitalize text-primary">nama</label>
+                <label for="name" class="text-base font-bold capitalize text-tertiary dark:text-primary">nama</label>
                 <input type="text" id="name"
-                  class="w-full bg-white/40 text-white p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary" />
+                  class="w-full dark:bg-white/40 bg-slate-100 text-dark focus:ring-tertiary focus:ring-1 focus:border-tertiary dark:text-white p-3 rounded-md focus:outline-none dark:focus:ring-primary dark:focus:ring-1 dark:focus:border-primary" />
               </div>
               <div class="w-full px-4 mb-8">
-                <label for="email" class="text-base font-bold capitalize text-primary">email</label>
+                <label for="email" class="text-base font-bold capitalize text-tertiary dark:text-primary">email</label>
                 <input type="email" id="email"
-                  class="w-full bg-white/40 text-white p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary" />
+                  class="w-full dark:bg-white/40 bg-slate-100 text-dark focus:ring-tertiary focus:ring-1 focus:border-tertiary dark:text-white p-3 rounded-md focus:outline-none dark:focus:ring-primary dark:focus:ring-1 dark:focus:border-primary" />
               </div>
               <div class="w-full px-4 mb-8">
-                <label for="message" class="text-base font-bold capitalize text-primary">message</label>
+                <label for="message"
+                  class="text-base font-bold capitalize text-tertiary dark:text-primary">message</label>
                 <textarea type="message" id="message"
-                  class="w-full bg-white/40 text-white p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32">
+                  class="w-full dark:bg-white/40 bg-slate-100 text-dark focus:ring-tertiary focus:ring-1 focus:border-tertiary dark:text-white p-3 rounded-md focus:outline-none dark:focus:ring-primary dark:focus:ring-1 dark:focus:border-primary h-32">
                         </textarea>
               </div>
               <div class="w-full px-4">
                 <button type="button"
-                  class="text-base font-semibold bg-primary capitalize text-white py-3 px-8 rounded-lg w-full hover:bg-primary/80 hover:shadow-sm transition duration-500">
+                  class="text-base font-semibold bg-tertiary dark:bg-primary capitalize text-white py-3 px-8 rounded-lg w-full hover:bg-tertiary/80 dark:hover:bg-primary/80 hover:shadow-sm transition duration-500">
                   send
                 </button>
               </div>
@@ -913,10 +1027,11 @@
           </form>
         </div>
 
-        <div class="w-full flex lg:w-1/2 lg:mt-0 lg:px-4 mt-10">
+        <div class="w-full flex lg:w-1/2 lg:mt-0 lg:px-4 mt-10" data-aos="fade-left" data-aos-offset=" 300"
+          data-aos-easing="ease-in-out" data-aos-delay="150">
 
           <div
-            class="w-full flex flex-col lg:flex-row py-10 px-8 bg-gradient-to-t lg:bg-gradient-to-r from-indigo-600 to-pink-500 rounded-lg space-y-4 lg:space-y-0 lg:space-x-8">
+            class="w-full flex flex-col lg:flex-row py-10 px-8 bg-gradient-to-t lg:bg-gradient-to-r from-violet-500 to-purple-500 dark:lg:bg-gradient-to-r dark:from-indigo-600 dark:to-pink-500 rounded-lg space-y-4 lg:space-y-0 lg:space-x-8">
 
             <div class="w-full lg:w-1/2 flex flex-col items-center space-y-8 lg:space-y-8 md:space-y-16">
               <img id="qris-image" src="./src/contact/qris.png" alt="yyy"
@@ -926,15 +1041,22 @@
                 QRIS, it's so easy! Let's transfer so that nothing is delayed, like we promised!
               </p>
 
-              <a id="download-link" href="./src/contact/qris-download.png" download="qris-download.png" target="_blank"
-                class="py-3 px-8 bg-primary capitalize text-white text-center rounded-lg w-full md:text-sm hover:bg-primary/80 hover:shadow-sm transition duration-500">Download
+              <a id="download-link" href="./src/contact/qr-download/qr-light.png" download="qris-download.png"
+                target="_blank"
+                class="py-3 px-8 dark:hidden dark:bg-primary bg-amber-500 capitalize text-white text-center rounded-lg w-full md:text-sm hover:bg-amber-500/80 dark:hover:bg-primary/80 hover:shadow-sm transition duration-500">Download
                 Qris</a>
+
+              <a id="download-link" href="./src/contact/qr-download/qr-dark.png" download="qris-download.png"
+                target="_blank"
+                class="py-3 px-8 hidden dark:block dark:bg-primary bg-amber-500 capitalize text-white text-center rounded-lg w-full md:text-sm hover:bg-amber-500/80 dark:hover:bg-primary/80 hover:shadow-sm transition duration-500">Download
+                Qris</a>
+
             </div>
 
             <div class="w-full lg:w-1/2 flex flex-col items-start space-y-11 lg:space-y-8 md:space-y-4">
 
               <div class="w-full">
-                <h4 class="font-semibold text-lg text-primary mb-2 uppercase">
+                <h4 class="font-semibold text-lg text-amber-500 dark:text-primary mb-2 uppercase">
                   sharing
                 </h4>
                 <h2 class="font-bold text-white mb-4 text-3xl sm:text-3xl lg:text-4xl capitalize">
@@ -959,7 +1081,7 @@
                   class="text-slate-200 flex md:text-sm items-center space-x-2 transition duration-300 group hover:text-white"
                   target="_blank">
                   <svg
-                    class="w-6 bg-primary p-1 rounded-full group-hover:fill-white fill-slate-200 transition duration-300"
+                    class="w-6 bg-amber-500 dark:bg-primary p-1 rounded-full group-hover:fill-white fill-slate-200 transition duration-300"
                     viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                     <path class="st0" d="M440.917,67.925H71.083C31.827,67.925,0,99.752,0,139.008v233.984c0,39.256,31.827,71.083,71.083,71.083
                                         h369.834c39.255,0,71.083-31.827,71.083-71.083V139.008C512,99.752,480.172,67.925,440.917,67.925z M178.166,321.72l-99.54,84.92
@@ -978,7 +1100,7 @@
                   class="text-slate-200 flex md:text-sm items-center space-x-2 transition duration-300 group hover:text-white"
                   target="_blank">
                   <svg
-                    class="w-6 bg-primary p-1 rounded-full group-hover:fill-white fill-slate-200 transition duration-300"
+                    class="w-6 bg-amber-500 dark:bg-primary p-1 rounded-full group-hover:fill-white fill-slate-200 transition duration-300"
                     viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 5V1H7V5L4.5 7.5L8.5 11.5L11 9H15V15H11C5.47715 15 1 10.5228 1 5Z" />
                   </svg>
@@ -988,7 +1110,7 @@
                   class="text-slate-200 flex md:text-sm items-center space-x-2 transition duration-300 group hover:text-white"
                   target="_blank">
                   <svg
-                    class="w-6 bg-primary p-1 rounded-full group-hover:fill-white capitalize fill-slate-200 transition duration-300"
+                    class="w-6 bg-amber-500 dark:bg-primary p-1 rounded-full group-hover:fill-white capitalize fill-slate-200 transition duration-300"
                     viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M96 22a51.88 51.88 0 0 0-36.77 15.303A52.368 52.368 0 0 0 44 74.246c0 16.596 4.296 28.669 20.811 48.898a163.733 163.733 0 0 1 20.053 28.38C90.852 163.721 90.146 172 96 172c5.854 0 5.148-8.279 11.136-20.476a163.723 163.723 0 0 1 20.053-28.38C143.704 102.915 148 90.841 148 74.246a52.37 52.37 0 0 0-15.23-36.943A51.88 51.88 0 0 0 96 22Z" />
@@ -1017,7 +1139,7 @@
   <!-- close contact -->
 
   <!-- footer -->
-  <footer class="bg-slate-900 pt-24 pb-12">
+  <footer class="dark:bg-slate-900 bg-slate-200 pt-24 pb-12">
     <div class="container">
 
       <div class="w-full">
@@ -1025,7 +1147,7 @@
 
           <!-- youtube -->
           <a href="https://www.youtube.com/@jenaissante13" target=" _blank"
-            class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-primary border-primary hover:border-primary hover:bg-primary hover:text-white">
+            class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-tertiary border-tertiary hover:border-tertiary hover:bg-tertiary  dark:text-primary dark:border-primary dark:hover:border-primary dark:hover:bg-primary hover:text-white dark:hover:text-white">
             <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <title>YouTube</title>
               <path
@@ -1036,7 +1158,7 @@
 
           <!-- instagran -->
           <a href="https://www.instagram.com/pngtyo_?igsh=MWJqa2Fmdzk0aWtkaQ==" target=" _blank"
-            class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-primary border-primary hover:border-primary hover:bg-primary hover:text-white">
+            class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-tertiary border-tertiary hover:border-tertiary hover:bg-tertiary  dark:text-primary dark:border-primary dark:hover:border-primary dark:hover:bg-primary hover:text-white dark:hover:text-white">
             <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <title>Instagram</title>
               <path
@@ -1047,7 +1169,7 @@
 
           <!-- whatsapp -->
           <a href="https://wa.me/6287797929789" target=" _blank"
-            class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-primary border-primary hover:border-primary hover:bg-primary hover:text-white">
+            class="w-9 h-9 mr-3 rounded-lg flex justify-center items-center border text-tertiary border-tertiary hover:border-tertiary hover:bg-tertiary  dark:text-primary dark:border-primary dark:hover:border-primary dark:hover:bg-primary hover:text-white dark:hover:text-white">
             <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <title>WhatsApp</title>
               <path
@@ -1062,21 +1184,21 @@
       <div class="w-full border-t mt-5 border-slate-800 ">
         <div class="flex items-center justify-center py-5 space-x-5">
           <a href="#home"
-            class="font-semibold capitalize border-b-2 border-primary transition-all ease-in-out duration-300 border-opacity-0 hover:border-opacity-100 hover:text-primary text-l text-slate-300">home</a>
+            class="font-semibold capitalize border-b-2 border-tertiary dark:border-primary transition-all ease-in-out duration-300 border-opacity-0 dark:border-opacity-0 hover:border-opacity-100 dark:hover:border-opacity-100 hover:text-tertiary dark:hover:text-primary text-l text-slate-400 dark:text-slate-300">home</a>
           <a href="#about"
-            class="font-semibold capitalize border-b-2 border-primary transition-all ease-in-out duration-300 border-opacity-0 hover:border-opacity-100 hover:text-primary text-l text-slate-300">about</a>
+            class="font-semibold capitalize border-b-2 border-tertiary dark:border-primary transition-all ease-in-out duration-300 border-opacity-0 dark:border-opacity-0 hover:border-opacity-100 dark:hover:border-opacity-100 hover:text-tertiary dark:hover:text-primary text-l text-slate-400 dark:text-slate-300">about</a>
           <a href="#portfolio"
-            class="font-semibold capitalize border-b-2 border-primary transition-all ease-in-out duration-300 border-opacity-0 hover:border-opacity-100 hover:text-primary text-l text-slate-300">portfolio</a>
+            class="font-semibold capitalize border-b-2 border-tertiary dark:border-primary transition-all ease-in-out duration-300 border-opacity-0 dark:border-opacity-0 hover:border-opacity-100 dark:hover:border-opacity-100 hover:text-tertiary dark:hover:text-primary text-l text-slate-400 dark:text-slate-300">portfolio</a>
           <a href="#blog"
-            class="font-semibold capitalize border-b-2 border-primary transition-all ease-in-out duration-300 border-opacity-0 hover:border-opacity-100 hover:text-primary text-l text-slate-300">blog</a>
+            class="font-semibold capitalize border-b-2 border-tertiary dark:border-primary transition-all ease-in-out duration-300 border-opacity-0 dark:border-opacity-0 hover:border-opacity-100 dark:hover:border-opacity-100 hover:text-tertiary dark:hover:text-primary text-l text-slate-400 dark:text-slate-300">blog</a>
           <a href="#contact"
-            class="font-semibold capitalize border-b-2 border-primary transition-all ease-in-out duration-300 border-opacity-0 hover:border-opacity-100 hover:text-primary text-l text-slate-300">contact</a>
+            class="font-semibold capitalize border-b-2 border-tertiary dark:border-primary transition-all ease-in-out duration-300 border-opacity-0 dark:border-opacity-0 hover:border-opacity-100 dark:hover:border-opacity-100 hover:text-tertiary dark:hover:text-primary text-l text-slate-400 dark:text-slate-300">contact</a>
         </div>
       </div>
 
       <p class="capitalize font-medium text-sm text-slate-500 text-center ">
         dibuat oleh <span><a href="mailto:Spangantyo@gmail.com" target="_blank"
-            class="font-semibold italic text-primary hover:text-pink-400">@Spangantyo</a></span>
+            class="font-semibold italic text-tertiary hover:text-violet-400 dark:text-primary dark:hover:text-pink-400">@Spangantyo</a></span>
         menggunakan <span><a href="https://v3.tailwindcss.com/" target="_blank"
             class="font-semibold italic text-blue-500 hover:text-blue-400">tailwindcss</a></span>
       </p>
@@ -1084,6 +1206,21 @@
     </div>
   </footer>
   <!-- close footer -->
+
+  <!-- back to top -->
+  <a href="#home" id="to-top"
+    class="h-14 w-14 p-4 bottom-4 shadow-md right-4 hidden border border-slate-200 bg-tertiary dark:bg-primary rounded-full fixed z-[9999]">
+    <svg class="fill-white w-full h-full" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14.9532 10.25L14.9982 9.50138C14.9832 9.50048 14.9682 9.50003 14.9532 9.50003V10.25ZM15.8775 9.71581L15.2064 9.38107L15.2064 9.38107L15.8775 9.71581ZM15.7482 8.65603L16.3191 8.16966C16.315 8.16484 16.3108 8.16008 16.3066 8.15537L15.7482 8.65603ZM12.7842 5.35003L13.3426 4.84937L13.3415 4.84817L12.7842 5.35003ZM11.9892 5.00003L11.9829 5.75011L11.9954 5.75L11.9892 5.00003ZM11.1942 5.35003L10.6368 4.84816L10.6356 4.84947L11.1942 5.35003ZM8.23116 8.65603L7.67265 8.15547C7.66845 8.16014 7.66432 8.16487 7.66025 8.16966L8.23116 8.65603ZM8.10177 9.71581L8.77293 9.38107H8.77293L8.10177 9.71581ZM9.02616 10.25V9.50003C9.01113 9.50003 8.99611 9.50048 8.98111 9.50138L9.02616 10.25ZM12.7392 10.25C12.7392 9.83582 12.4034 9.50003 11.9892 9.50003C11.5749 9.50003 11.2392 9.83582 11.2392 10.25H12.7392ZM11.2392 19C11.2392 19.4142 11.5749 19.75 11.9892 19.75C12.4034 19.75 12.7392 19.4142 12.7392 19H11.2392ZM11.9892 11H14.9532V9.50003H11.9892V11ZM14.9081 10.9987C15.5956 11.04 16.2413 10.6669 16.5487 10.0505L15.2064 9.38107C15.1674 9.45928 15.0854 9.50663 14.9982 9.50138L14.9081 10.9987ZM16.5487 10.0505C16.8561 9.43423 16.7657 8.69392 16.3191 8.16966L15.1772 9.14241C15.2339 9.20893 15.2454 9.30287 15.2064 9.38107L16.5487 10.0505ZM16.3066 8.15537L13.3426 4.84937L12.2257 5.85069L15.1897 9.15669L16.3066 8.15537ZM13.3415 4.84817C12.9951 4.46352 12.5005 4.24576 11.9829 4.25006L11.9954 5.75C12.0835 5.74927 12.1678 5.78637 12.2268 5.85189L13.3415 4.84817ZM11.9954 4.25006C11.4778 4.24576 10.9832 4.46352 10.6368 4.84817L11.7515 5.85189C11.8105 5.78637 11.8948 5.74927 11.9829 5.75L11.9954 4.25006ZM10.6356 4.84947L7.67265 8.15547L8.78967 9.1566L11.7527 5.8506L10.6356 4.84947ZM7.66025 8.16966C7.21361 8.69392 7.12323 9.43423 7.43062 10.0505L8.77293 9.38107C8.73392 9.30287 8.74539 9.20893 8.80207 9.14241L7.66025 8.16966ZM7.43062 10.0505C7.738 10.6669 8.38373 11.04 9.07121 10.9987L8.98111 9.50138C8.89387 9.50663 8.81193 9.45928 8.77293 9.38107L7.43062 10.0505ZM9.02616 11H11.9892V9.50003H9.02616V11ZM11.2392 10.25V19H12.7392V10.25H11.2392Z" />
+    </svg>
+  </a>
+  <!-- close back to top -->
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
   <script src="src/js/script.js"></script>
 </body>
